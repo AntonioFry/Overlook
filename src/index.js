@@ -13,22 +13,22 @@ import './images/turing-logo.png'
 let userData;
 fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1903/users/users')
   .then(data => data.json())
-  .then(data => userData = data);
+  .then(data => userData = data.users);
 
 let roomsData;
 fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1903/rooms/rooms')
   .then(data => data.json())
-  .then(data => roomsData = data);
+  .then(data => roomsData = data.rooms);
 
 let bookingData;
 fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1903/bookings/bookings')
   .then(data => data.json())
-  .then(data => bookingData = data);
+  .then(data => bookingData = data.bookings);
 
 let roomServiceData;
 fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1903/room-services/roomServices')
   .then(data => data.json())
-  .then(data => roomServiceData = data);
+  .then(data => roomServiceData = data.roomServices);
 
 $(document).ready(() => {
 
