@@ -32,4 +32,8 @@ describe("bookings", function() {
     expect(bookings.leastPopularDate()).to.equal("07/02/2020");
   });
 
+  it('should be able to filter rooms by type', function() {
+    
+  });
+
 });

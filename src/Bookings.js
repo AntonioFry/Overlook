@@ -4,6 +4,10 @@ class Bookings {
     this.roomsData = roomsData;
   }
 
+  getAvailableRooms() {
+    
+  }
+
   getDatesAndBooks() {
     let dateAndBooks = this.bookingData.reduce((acc, book) => {
       !acc[book.date] ? acc[book.date] = 1 : acc[book.date] += 1;
@@ -31,12 +35,12 @@ class Bookings {
     }, 0);
     return leastPopularDate;
   }
-
-  BookingsForCurrentDay() {
-
+  
+  filterRoomByType(date, ) {
+    
   }
 
-  filterRoomByType(date) {
+  BookingsForCurrentDay(date) {
 
   }
 
