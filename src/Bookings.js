@@ -12,6 +12,7 @@ class Bookings {
           return room
         }
       })
+      console.log(room)
       return room;
     });
   }
