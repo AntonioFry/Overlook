@@ -3,16 +3,17 @@ class CustomerRepo {
     this.usersData = usersData;
   }
 
-  createCustomer(name) {
-    
+  createCustomer(customerName) {
+    let customerId = this.usersData.length + 1;
+    this.usersData.push({id: customerId, name: customerName})
   }
 
   findCustomerByName(name) {
     return this.usersData.find(user => user.name === name);
   }
 
-  findCustomerById() {
-    return this.usersData.find(user => user.id === name);
+  findCustomerById(id) {
+    return this.usersData.find(user => user.id === id);
   }
 
 }
