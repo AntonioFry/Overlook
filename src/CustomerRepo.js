@@ -3,9 +3,9 @@ class CustomerRepo {
     this.usersData = usersData;
   }
 
-  createCustomer(name) {
+  createCustomer(customerName) {
     let customerId = this.usersData.length + 1;
-    console.log()
+    this.usersData.push({id: customerId, name: customerName})
   }
 
   findCustomerByName(name) {
