@@ -37,8 +37,8 @@ class Bookings {
 
   leastPopularDate() {
     let dateAndBooks = this.getDatesAndBooks();
-    let leastPopularDate = Object.keys(dateAndBooks).reduce((finalDate, date) => {
-      return dateAndBooks[finalDate] < dateAndBooks[date] ? finalDate : date;
+    let leastPopularDate = Object.keys(dateAndBooks).reduce((endDate, date) => {
+      return dateAndBooks[endDate] < dateAndBooks[date] ? endDate : date;
     }, 0);
     return leastPopularDate;
   }

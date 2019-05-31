@@ -3,11 +3,7 @@ class Orders {
     this.roomServiceData = roomServiceData;
   }
 
-  breakdownOfDates() {
-
-  }
-
-  breakdownOfDollars() {
+  breakdownOfDatesAndDollars(customerId) {
 
   }
 
