@@ -4,7 +4,8 @@ class CustomerRepo {
   }
 
   createCustomer(name) {
-    
+    let customerId = this.usersData.length + 1;
+    console.log()
   }
 
   findCustomerByName(name) {
