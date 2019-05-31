@@ -36,7 +36,7 @@ class Bookings {
     return leastPopularDate;
   }
   
-  filterRoomByType(date, ) {
+  filterRoomByType(date, roomType) {
     
   }
 
