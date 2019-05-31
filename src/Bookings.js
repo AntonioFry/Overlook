@@ -4,8 +4,13 @@ class Bookings {
     this.roomsData = roomsData;
   }
 
-  getAvailableRooms() {
-    
+  getAvailableRooms(date) {
+    const bookingsByDate = this.bookingData.filter(book => book.date !== date);
+    const roomsAvailable = this.roomsData.filter(room => {
+      let roomNumbers = bookingsByDate.map(book => book.roomNumber);
+      return roomNumbers.includes(room.number)
+    });
+    return roomsAvailable;
   }
 
   getDatesAndBooks() {

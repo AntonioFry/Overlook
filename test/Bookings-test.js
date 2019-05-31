@@ -32,8 +32,12 @@ describe("bookings", function() {
     expect(bookings.leastPopularDate()).to.equal("07/02/2020");
   });
 
+  it('should return all available rooms by date', function() {
+    expect(bookings.getAvailableRooms("17/07/2019")).to.equal(5)
+  });
+
   it('should be able to filter rooms by type', function() {
-    
+
   });
 
 });

@@ -1,11 +1,10 @@
 class Customer {
-  constructor(dataFilePath) {
-    this.person = dataFilePath;
+  constructor(person) {
+    this.id = person.id;
+    this.name = person.name;
   }
 
-  createCustomer(name) {
-
-  }
+  
   
 }
 
