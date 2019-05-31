@@ -45,7 +45,7 @@ describe("bookings", function() {
   });
 
   it('should return all the bookings for the current day', function() {
-    expect(bookings.bookingsForCurrentDay("17/07/2019").length).to.equal(1)
+    expect(bookings.bookingsForCurrentDay("17/07/2019").length).to.equal(1);
   });
 
 });

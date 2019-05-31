@@ -48,7 +48,8 @@ class Bookings {
   }
 
   bookingsForCurrentDay(date) {
-    
+    const todaysBookings = this.bookingData.filter(book => book.date === date);
+    return todaysBookings;
   }
 
 }
