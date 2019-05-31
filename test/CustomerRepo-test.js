@@ -25,6 +25,14 @@ describe('CustomerRepo', function() {
     expect(usersData.length).to.equal(7);
   });
 
-  
+  it('should be able to find customer by name', function() {
+    customerRepo.createCustomer("John Doe");
+    expect(customerRepo.findCustomerByName("John Doe").id).to.equal(7);
+  });
+
+  it('should be able to find customer by id', function() {
+    customerRepo.createCustomer("John Doe");
+    expect(customerRepo.findCustomerById(7).name).to.equal("John Doe");
+  });
 
 });
