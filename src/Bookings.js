@@ -43,8 +43,10 @@ class Bookings {
     return leastPopularDate;
   }
   
-  filterRoomByType(date, roomType) {
-    
+  filterRoomsByType(date, type) {
+    const availableRooms = this.getAvailableRooms(date);
+    const roomsByType = availableRooms.filter(room => room.roomType === type);
+    return roomsByType;
   }
 
   bookingsForCurrentDay(date) {
