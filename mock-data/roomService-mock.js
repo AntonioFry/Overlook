@@ -1,7 +1,7 @@
 const roomServiceMock = [
   {
     userID: 1,
-    date: "21/10/2019",
+    date: "24/12/2019",
     food: "Generic Plastic Sandwich",
     totalCost: 9.48
   },
@@ -34,7 +34,7 @@ const roomServiceMock = [
     date: "19/07/2019",
     food: "Rustic Wooden Sandwich",
     totalCost: 5.86
-  },
+  }
 ]
 
 export default roomServiceMock;
