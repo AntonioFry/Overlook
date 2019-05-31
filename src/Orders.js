@@ -1,25 +1,22 @@
 class Orders {
-  constructor(dataFilePath) {
-    this.dataFilePath = dataFilePath;
+  constructor(roomServiceData) {
+    this.roomServiceData = roomServiceData;
   }
 
-  breakdownOfDates() {
-
-  }
-
-  breakdownOfDollars() {
-    
-  }
-
-  getOrdersByDate() {
+  breakdownOfDatesAndDollars(customerId) {
 
   }
 
-  DollarsSpentByDay() {
+  getOrdersByDate(date) {
+    let ordersByDate = this.roomServiceData.filter(data => data.date === date);
+    return ordersByDate;
+  }
+
+  dollarsSpentByDay() {
 
   }
 
-  DollarsSpentOnAllDays() {
+  dollarsSpentOnAllDays() {
 
   }
 

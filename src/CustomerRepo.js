@@ -4,10 +4,8 @@ class CustomerRepo {
   }
 
   createCustomer(name) {
-
+    
   }
-
-
 
   findCustomerByName(name) {
     return this.usersData.find(user => user.name === name);
