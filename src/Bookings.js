@@ -13,6 +13,12 @@ class Bookings {
     return roomsAvailable;
   }
 
+  roomsAvailablePercentage(date) {
+    let availableRooms = this.getAvailableRooms(date);
+    const percentage = (availableRooms.length / this.roomsData.length) * 100;
+    return `${Math.round(percentage)}%`;
+  }
+
   getDatesAndBooks() {
     let dateAndBooks = this.bookingData.reduce((acc, book) => {
       !acc[book.date] ? acc[book.date] = 1 : acc[book.date] += 1;
@@ -20,10 +26,6 @@ class Bookings {
     }, {});
     return dateAndBooks;
   }
-
-  // sortDate() {
-    // if I get the chance, should be able to sort the days;
-  // }
 
   getMostPopularDate() {
     let dateAndBooks = this.getDatesAndBooks();
@@ -45,8 +47,8 @@ class Bookings {
     
   }
 
-  BookingsForCurrentDay(date) {
-
+  bookingsForCurrentDay(date) {
+    
   }
 
 }
