@@ -33,11 +33,22 @@ describe("bookings", function() {
   });
 
   it('should return all available rooms by date', function() {
-    expect(bookings.getAvailableRooms("17/07/2019")).to.equal(5)
+    expect(bookings.getAvailableRooms("17/07/2019").length).to.equal(5)
+  });
+
+  it('should return the percengtage of rooms available', function() {
+    expect(bookings.roomsAvailablePercentage("17/07/2019")).to.equal('83%')
   });
 
   it('should be able to filter rooms by type', function() {
+    expect(bookings.getAvailableRooms("21/08/2019").length).to.equal(4);
+    expect(bookings.filterRoomsByType("21/08/2019", "junior suite").length).to.equal(2);
+    expect(bookings.filterRoomsByType("21/08/2019", "single room").length).to.equal(0);
+  });
 
+  it('should return all the bookings for the current day', function() {
+    expect(bookings.getAvailableRooms("17/07/2019").length).to.equal(5)
+    expect(bookings.bookingsForCurrentDay("17/07/2019").length).to.equal(1);
   });
 
 });

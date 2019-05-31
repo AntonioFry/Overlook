@@ -17,7 +17,7 @@ const roomsMock = [
   },
   {
     number: 3,
-    roomType: "single room",
+    roomType: "residential suite",
     bidet: false,
     bedSize: "queen",
     numBeds: 1,
