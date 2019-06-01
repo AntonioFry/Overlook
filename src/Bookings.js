@@ -4,6 +4,23 @@ class Bookings {
     this.roomsData = roomsData;
   }
 
+  bookRoom(userId, date) {
+    const availableRooms = this.getavailableRooms(date);
+    console.log(availableRooms);
+  }
+
+  unbookRoom(userId) {
+    const booking = this.bookingData.find(booking => {
+      return booking.userID === userId;
+    });
+    const bookingIndex = this.bookingData.indexOf(booking);
+    this.bookingData.splice(bookingIndex, 1); 
+  }
+
+  upgradeRoom(userId) {
+
+  }
+
   getAvailableRooms(date) {
     const bookingsByDate = this.bookingData.filter(book => book.date !== date);
     const roomsAvailable = this.roomsData.filter(room => {
@@ -14,13 +31,13 @@ class Bookings {
   }
 
   roomsAvailablePercentage(date) {
-    let availableRooms = this.getAvailableRooms(date);
+    const availableRooms = this.getAvailableRooms(date);
     const percentage = (availableRooms.length / this.roomsData.length) * 100;
     return `${Math.round(percentage)}%`;
   }
 
   getDatesAndBooks() {
-    let dateAndBooks = this.bookingData.reduce((acc, book) => {
+    const dateAndBooks = this.bookingData.reduce((acc, book) => {
       !acc[book.date] ? acc[book.date] = 1 : acc[book.date] += 1;
       return acc;
     }, {});
@@ -28,8 +45,8 @@ class Bookings {
   }
 
   getMostPopularDate() {
-    let dateAndBooks = this.getDatesAndBooks();
-    let popularDate = Object.keys(dateAndBooks).reduce((finalDate, date) => {
+    const dateAndBooks = this.getDatesAndBooks();
+    const popularDate = Object.keys(dateAndBooks).reduce((finalDate, date) => {
       return dateAndBooks[finalDate] > dateAndBooks[date] ? finalDate : date;
     }, 0);
     return popularDate;
@@ -46,7 +63,11 @@ class Bookings {
   filterRoomsByType(date, type) {
     const availableRooms = this.getAvailableRooms(date);
     const roomsByType = availableRooms.filter(room => room.roomType === type);
-    return roomsByType;
+    if (roomsByType.length > 0) {
+      return roomsByType;
+    } else {
+      return availableRooms;
+    }
   }
 
   bookingsForCurrentDay(date) {
