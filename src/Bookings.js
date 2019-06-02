@@ -4,17 +4,29 @@ class Bookings {
     this.roomsData = roomsData;
   }
 
-  bookRoom(userId, date) {
-    const availableRooms = this.getAvailableRooms(date);
-    console.log(availableRooms);
-
+  bookRoom(customerId, desiredDate, room) {
+    // const availableRooms = this.getAvailableRooms(date);
+    let takenRoom = this.bookingData.find(booking => {
+      return booking.date === desiredDate && booking.roomNumber === room;
+    });
+    console.log(takenRoom);
+    if (takenRoom === undefined) {
+      this.bookingData.push(
+        { userID: customerId, date: desiredDate, roomNumber: room }
+      );
+    } else {
+      return `You cannot book this room for this date`;
+    }
   }
 
-  unbookRoom(userId) {
-    const booking = this.bookingData.find(booking => {
-      return booking.userID === userId;
+  unbookRoom(customerId, date) {
+    const bookings = this.bookingData.filter(booking => {
+      return booking.userID === customerId;
     });
-    const bookingIndex = this.bookingData.indexOf(booking);
+    const specificBooking = bookings.find(booking => {
+      return booking.date === date;
+    });
+    const bookingIndex = this.bookingData.indexOf(specificBooking);
     this.bookingData.splice(bookingIndex, 1); 
   }
 

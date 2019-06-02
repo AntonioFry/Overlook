@@ -52,13 +52,15 @@ describe("bookings", function() {
   });
 
   it('should be able to book a room', function() {
-    bookings.bookRoom(1, "17/07/2019");
+    bookings.bookRoom(1, "17/07/2019", 4);
+    bookings.bookRoom(1, "17/07/2019", 3);
     expect(bookings.bookingData.length).to.equal(7);
   });
 
   it('should be able to unbook a room', function() {
-    bookings.unbookRoom(4);
-    expect(bookings.bookingData.length).to.equal(5);
+    bookings.unbookRoom(4, "17/07/2019");
+    console.log(bookings.bookingData)
+    expect(bookings.bookingData.length).to.equal(6);
   });
 
 });
