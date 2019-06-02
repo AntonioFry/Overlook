@@ -4,6 +4,34 @@ class Bookings {
     this.roomsData = roomsData;
   }
 
+  bookRoom(customerId, desiredDate, room) {
+    let takenRoom = this.bookingData.find(booking => {
+      return booking.date === desiredDate && booking.roomNumber === room;
+    });
+    if (takenRoom === undefined) {
+      this.bookingData.push(
+        { userID: customerId, date: desiredDate, roomNumber: room }
+      );
+    } else {
+      return `You cannot book this room for this date`;
+    }
+  }
+
+  unbookRoom(customerId, date) {
+    const bookings = this.bookingData.filter(booking => {
+      return booking.userID === customerId;
+    });
+    const specificBooking = bookings.find(booking => {
+      return booking.date === date;
+    });
+    const bookingIndex = this.bookingData.indexOf(specificBooking);
+    this.bookingData.splice(bookingIndex, 1); 
+  }
+
+  upgradeRoom(userId) {
+    
+  }
+
   getAvailableRooms(date) {
     const bookingsByDate = this.bookingData.filter(book => book.date !== date);
     const roomsAvailable = this.roomsData.filter(room => {
@@ -14,13 +42,13 @@ class Bookings {
   }
 
   roomsAvailablePercentage(date) {
-    let availableRooms = this.getAvailableRooms(date);
+    const availableRooms = this.getAvailableRooms(date);
     const percentage = (availableRooms.length / this.roomsData.length) * 100;
     return `${Math.round(percentage)}%`;
   }
 
   getDatesAndBooks() {
-    let dateAndBooks = this.bookingData.reduce((acc, book) => {
+    const dateAndBooks = this.bookingData.reduce((acc, book) => {
       !acc[book.date] ? acc[book.date] = 1 : acc[book.date] += 1;
       return acc;
     }, {});
@@ -28,8 +56,8 @@ class Bookings {
   }
 
   getMostPopularDate() {
-    let dateAndBooks = this.getDatesAndBooks();
-    let popularDate = Object.keys(dateAndBooks).reduce((finalDate, date) => {
+    const dateAndBooks = this.getDatesAndBooks();
+    const popularDate = Object.keys(dateAndBooks).reduce((finalDate, date) => {
       return dateAndBooks[finalDate] > dateAndBooks[date] ? finalDate : date;
     }, 0);
     return popularDate;
@@ -46,7 +74,11 @@ class Bookings {
   filterRoomsByType(date, type) {
     const availableRooms = this.getAvailableRooms(date);
     const roomsByType = availableRooms.filter(room => room.roomType === type);
-    return roomsByType;
+    if (roomsByType.length > 0) {
+      return roomsByType;
+    } else {
+      return availableRooms;
+    }
   }
 
   bookingsForCurrentDay(date) {

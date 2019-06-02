@@ -10,9 +10,18 @@ import './css/base.scss';
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
 
-import './data';
+import data from './data';
+import Bookings from './Bookings';
 
 $(document).ready(() => {
+  console.log(data.userData)
+
+  let customer;
+  let bookings = new Bookings(data.bookingData, data.roomsData);
+  let orders;
+  
+  $('#rooms-available')
+    .text(`there are ${bookings.getAvailableRooms("17/07/2019").length} available today`);
 
 });
 

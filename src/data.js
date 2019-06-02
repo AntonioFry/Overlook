@@ -25,7 +25,7 @@ let netData = {
   'roomsData': {},
   'bookingData': {},
   'roomServiceData': {}
-}
+};
 
 Promise.all([userData, roomsData, bookingData, roomServiceData])
   .then(function(fetchData) {
