@@ -5,11 +5,9 @@ class Bookings {
   }
 
   bookRoom(customerId, desiredDate, room) {
-    // const availableRooms = this.getAvailableRooms(date);
     let takenRoom = this.bookingData.find(booking => {
       return booking.date === desiredDate && booking.roomNumber === room;
     });
-    console.log(takenRoom);
     if (takenRoom === undefined) {
       this.bookingData.push(
         { userID: customerId, date: desiredDate, roomNumber: room }
@@ -31,7 +29,7 @@ class Bookings {
   }
 
   upgradeRoom(userId) {
-
+    
   }
 
   getAvailableRooms(date) {

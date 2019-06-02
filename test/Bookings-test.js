@@ -59,7 +59,6 @@ describe("bookings", function() {
 
   it('should be able to unbook a room', function() {
     bookings.unbookRoom(4, "17/07/2019");
-    console.log(bookings.bookingData)
     expect(bookings.bookingData.length).to.equal(6);
   });
 
