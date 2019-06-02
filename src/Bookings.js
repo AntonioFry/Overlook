@@ -5,8 +5,9 @@ class Bookings {
   }
 
   bookRoom(userId, date) {
-    const availableRooms = this.getavailableRooms(date);
+    const availableRooms = this.getAvailableRooms(date);
     console.log(availableRooms);
+
   }
 
   unbookRoom(userId) {

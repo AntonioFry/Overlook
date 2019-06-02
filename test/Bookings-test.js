@@ -52,6 +52,7 @@ describe("bookings", function() {
   });
 
   it('should be able to book a room', function() {
+    bookings.bookRoom(1, "17/07/2019");
     expect(bookings.bookingData.length).to.equal(7);
   });
 
