@@ -7,16 +7,16 @@
     <header>
       <h1>Overlook</h1>
     </header>
-    <nav>
-      <ul class="tabs">
-        <li class="link tab">Main</li>
-        <li class="link tab">Rooms</li>
-        <li class="link tab">Customer</li>
-        <li class="link tab">Orders</li>
-      </ul>
-    </nav>
     <main>
-      <section class="content" id="main-tab" aria-label="Overlook dashboard">
+      <nav>
+        <ul class="tabs">
+          <li class="link tab" data-tab="tab-1">Main</li>
+          <li class="link tab" data-tab="tab-2">Rooms</li>
+          <li class="link tab" data-tab="tab-3">Customer</li>
+          <li class="link tab" data-tab="tab-4">Orders</li>
+        </ul>
+      </nav>
+      <section class="content selected" id="tab-1" aria-label="Overlook dashboard">
         <time></time>
         <div class="tab-content-containers">
           <h2 class="main-headings">Rooms Available Today</h2>
@@ -27,7 +27,7 @@
             <p id="rooms-occupied"></p>
         </div>
       </section>
-      <section class="content" id="customer-tab" aria-label="customer section">
+      <section class="content" id="tab-2" aria-label="customer section">
         <form>
           <label for="search-customer">Search For Customer</label>
           <input id="search-customer" type="text">
@@ -35,7 +35,7 @@
         </form>
           <button id="add-customer-button">Add Customer</button>
       </section>
-      <section class="content" id="rooms-tab" aria-label="rooms section">
+      <section class="content" id="tab-3" aria-label="rooms section">
         <form>
           <label for="search-rooms-by-date">Search For Rooms by Date</label>
           <input id="search-rooms-by-date" type="text">
@@ -50,7 +50,7 @@
           <p id="least-booked-date"></p>
         </div>
       </section>
-      <section class="content" id="orders-tab" aria-label="orders section">
+      <section class="content" id="tab-4" aria-label="orders section">
         <form>
           <label for="search-orders-by-date"></label>
           <input id="search-orders-by-date" type="text">

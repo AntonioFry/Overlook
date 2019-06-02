@@ -13,16 +13,30 @@ import './images/turing-logo.png'
 import data from './data';
 import Bookings from './Bookings';
 
-$(document).ready(() => {
-  console.log(data.userData)
 
-  let customer;
-  let bookings = new Bookings(data.bookingData, data.roomsData);
-  let orders;
+setTimeout(() => {
+  $(document).ready(() => {
   
-  $('#rooms-available')
-    .text(`there are ${bookings.getAvailableRooms("17/07/2019").length} available today`);
+    $('ul.tabs li').click(function () {
+      var tab_id = $(this).attr('data-tab');
 
-});
+      $('ul.tabs li').removeClass('selected');
+      $('.tab-content').removeClass('selected');
+
+      $(this).addClass('selected');
+      $("#" + tab_id).addClass('selected');
+    })
+  
+    console.log(data.userData)
+  
+    let customer;
+    let bookings = new Bookings(data.bookingData, data.roomsData);
+    let orders;
+    
+    $('#rooms-available')
+      .text(`there are ${bookings.getAvailableRooms("17/07/2019").length} available today`);
+  
+  });  
+}, 135);
 
 console.log('This is the JavaScript entry file - your code begins here.');
