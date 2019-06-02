@@ -37,7 +37,7 @@ describe("bookings", function() {
   });
 
   it('should return the percengtage of rooms available', function() {
-    expect(bookings.roomsAvailablePercentage("17/07/2019")).to.equal('83%')
+    expect(bookings.roomsOccupiedPercentage("17/07/2019")).to.equal('17%')
   });
 
   it('should be able to filter rooms by type', function() {

@@ -18,25 +18,44 @@ setTimeout(() => {
   $(document).ready(() => {
   
     $('ul.tabs li').click(function () {
-      var tab_id = $(this).attr('data-tab');
+      let tab_id = $(this).attr('data-tab');
 
       $('ul.tabs li').removeClass('selected');
-      $('.tab-content').removeClass('selected');
+      $('.content').removeClass('selected');
 
       $(this).addClass('selected');
       $("#" + tab_id).addClass('selected');
-    })
-  
-    console.log(data.userData)
-  
+    });
+    
+    let date = new Date()
+    
+    function todaysDate() {
+      if (date.getDay() < 10 && (date.getMonth() + 1) < 10) {
+        return `0${date.getDate()}/0${date.getMonth()+1}/${date.getFullYear()}`;
+      } else if (date.getDate() < 10) {
+        return `0${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`;
+      } else if ((date.getMonth() + 1) < 10) {
+        return `${date.getDate()}/0${date.getMonth()+1}/${date.getFullYear()}`;
+      } else {
+        return `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`;
+      }
+    }
+
+    
     let customer;
     let bookings = new Bookings(data.bookingData, data.roomsData);
     let orders;
     
+    $('#todays-date').text(todaysDate());
+
     $('#rooms-available')
-      .text(`there are ${bookings.getAvailableRooms("17/07/2019").length} available today`);
-  
+      .text(`there are ${bookings.getAvailableRooms(todaysDate()).length} rooms available today`);
+
+    $('#rooms-occupied')
+      .text(`${bookings.roomsOccupiedPercentage(todaysDate())} of rooms are occupied today`)
+
+    
   });  
-}, 135);
+}, 140);
 
 console.log('This is the JavaScript entry file - your code begins here.');

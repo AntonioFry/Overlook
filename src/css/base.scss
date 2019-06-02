@@ -6,6 +6,7 @@ body {
 
 main {
   margin: auto;
+  margin-top: 10%;
   width: 90%;
 }
 
@@ -21,8 +22,11 @@ ul.tabs {
   }
   li.selected {
 		background: #ededed;
-		color: #222;
 	}
+}
+
+time {
+  float: right;
 }
 
 .content {
