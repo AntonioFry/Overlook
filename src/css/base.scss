@@ -1,7 +1,21 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+
 
 body {
   box-sizing: border-box;
+  margin: 0px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+header {
+  background-color: #6478AD; 
+  height: 10%;
+  padding: 10px;
+  width: 100%;
+  h1 {
+    margin: 0px;
+  }
 }
 
 main {
@@ -37,4 +51,46 @@ time {
 
 .content.selected {
   display: inherit;
+}
+
+#search-customer-form {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: auto;
+  width: 20%;
+  button {
+    margin: 3px 0px;
+    width: 100%;
+  }
+  label {
+    margin: 3px 0px;
+    text-align: center;
+    width: 100%;
+  }
+  input {
+    margin: 3px 0px;
+    width: 100%;
+  }
+} 
+
+#add-customer-form {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 20px auto;
+  width: 20%;
+  button {
+    margin: 3px 0px;
+    width: 100%;
+  }
+  label {
+    margin: 3px 0px;
+    text-align: center;
+    width: 100%;
+  }
+  input {
+    margin: 3px 0px;
+    width: 100%;
+  }
 }
