@@ -7,18 +7,18 @@
     <header>
       <h1>Overlook</h1>
     </header>
-    <nav>
-      <ul class="tabs">
-        <li class="link tab">Main</li>
-        <li class="link tab">Rooms</li>
-        <li class="link tab">Customer</li>
-        <li class="link tab">Orders</li>
-      </ul>
-    </nav>
     <main>
-      <section class="content" aria-label="Overlook dashboard">
-        <time></time>
-        <div>
+      <nav>
+        <ul class="tabs">
+          <li class="link tab selected" data-tab="tab-1">Main</li>
+          <li class="link tab" data-tab="tab-2">Customer</li>
+          <li class="link tab" data-tab="tab-3">Rooms</li>
+          <li class="link tab" data-tab="tab-4">Orders</li>
+        </ul>
+      </nav>
+      <section class="content selected" id="tab-1" aria-label="Overlook dashboard">
+        <time id="todays-date"></time>
+        <div class="tab-content-containers">
           <h2 class="main-headings">Rooms Available Today</h2>
             <p id="rooms-available"></p>
           <h2 class="main-headings">Todays Total Income</h2>
@@ -27,14 +27,39 @@
             <p id="rooms-occupied"></p>
         </div>
       </section>
-      <section class="content" aria-label="customer section">
-
+      <section class="content" id="tab-2" aria-label="customer section">
+        <form>
+          <label for="search-customer">Search For Customer</label>
+          <input id="search-customer" type="text">
+          <button id="search-customer-button">Search</button>
+        </form>
+          <button id="add-customer-button">Add Customer</button>
       </section>
-      <section class="content" aria-label="rooms section">
-
+      <section class="content" id="tab-3" aria-label="rooms section">
+        <form>
+          <label for="search-rooms-by-date">Search For Rooms by Date</label>
+          <input id="search-rooms-by-date" type="text">
+          <button id="rooms-by-date-button">Search</button>
+        </form>
+        <h2>Most Popular Booking Date(s)</h2>
+        <div class="tab-content-containers">
+          <p id="popular-booking-date"></p>
+        </div>
+        <h2>Least Booked Date(s)</h2>
+        <div class="tab-content-containers">
+          <p id="least-booked-date"></p>
+        </div>
       </section>
-      <section class="content" aria-label="orders section">
+      <section class="content" id="tab-4" aria-label="orders section">
+        <form>
+          <label for="search-orders-by-date"></label>
+          <input id="search-orders-by-date" type="text">
+          <button id="orders-by-date-button">Search</button>
+        </form>
+        <h2>All Orders For <span id=""></span></h2>
+        <div class="tab-content-containers" id="all-roomservice-today">
 
+        </div>
       </section>
     </main>
     <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->

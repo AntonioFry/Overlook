@@ -1,6 +1,40 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: pink;
 
 body {
-  background-color: $primary-background;
+  box-sizing: border-box;
+}
+
+main {
+  margin: auto;
+  margin-top: 10%;
+  width: 90%;
+}
+
+ul.tabs {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  li {
+	  background: none;
+	  display: inline-block;
+	  padding: 10px 15px;
+	  cursor: pointer;
+  }
+  li.selected {
+		background: #ededed;
+	}
+}
+
+time {
+  float: right;
+}
+
+.content {
+	display: none;
+	background: #ededed;
+	padding: 15px;
+}
+
+.content.selected {
+  display: inherit;
 }

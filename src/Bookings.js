@@ -33,18 +33,18 @@ class Bookings {
   }
 
   getAvailableRooms(date) {
-    const bookingsByDate = this.bookingData.filter(book => book.date !== date);
+    const bookingsByDate = this.bookingData.filter(book => book.date === date);
+    const bookedRoomNumbers = bookingsByDate.map(booking => booking.roomNumber);
     const roomsAvailable = this.roomsData.filter(room => {
-      let roomNumbers = bookingsByDate.map(book => book.roomNumber);
-      return roomNumbers.includes(room.number)
+      return !bookedRoomNumbers.includes(room.number)
     });
     return roomsAvailable;
   }
 
-  roomsAvailablePercentage(date) {
+  roomsOccupiedPercentage(date) {
     const availableRooms = this.getAvailableRooms(date);
     const percentage = (availableRooms.length / this.roomsData.length) * 100;
-    return `${Math.round(percentage)}%`;
+    return `${100 - Math.round(percentage)}%`;
   }
 
   getDatesAndBooks() {

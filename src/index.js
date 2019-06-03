@@ -13,16 +13,54 @@ import './images/turing-logo.png'
 import data from './data';
 import Bookings from './Bookings';
 
-$(document).ready(() => {
-  console.log(data.userData)
 
-  let customer;
-  let bookings = new Bookings(data.bookingData, data.roomsData);
-  let orders;
+setTimeout(() => {
+  $(document).ready(() => {
   
-  $('#rooms-available')
-    .text(`there are ${bookings.getAvailableRooms("17/07/2019").length} available today`);
+    $('ul.tabs li').click(function () {
+      let tab_id = $(this).attr('data-tab');
 
-});
+      $('ul.tabs li').removeClass('selected');
+      $('.content').removeClass('selected');
+
+      $(this).addClass('selected');
+      $("#" + tab_id).addClass('selected');
+    });
+    
+    let date = new Date()
+    
+    function todaysDate() {
+      if (date.getDay() < 10 && (date.getMonth() + 1) < 10) {
+        return `0${date.getDate()}/0${date.getMonth()+1}/${date.getFullYear()}`;
+      } else if (date.getDate() < 10) {
+        return `0${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`;
+      } else if ((date.getMonth() + 1) < 10) {
+        return `${date.getDate()}/0${date.getMonth()+1}/${date.getFullYear()}`;
+      } else {
+        return `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`;
+      }
+    }
+
+    
+    let customer;
+    let bookings = new Bookings(data.bookingData, data.roomsData);
+    let orders;
+    
+    $('#todays-date').text(todaysDate());
+
+    $('#rooms-available')
+      .text(`there are ${bookings.getAvailableRooms(todaysDate()).length} rooms available today`);
+
+    $('#rooms-occupied')
+      .text(`${bookings.roomsOccupiedPercentage(todaysDate())} of rooms are occupied today`);
+
+    $('#popular-booking-date')
+      .text(`${bookings.getMostPopularDate(todaysDate())} is the most booked date`);
+    
+    $('#least-booked-date')
+      .text(`${bookings.leastPopularDate(todaysDate())} is the least booked date`);
+
+  });  
+}, 140);
 
 console.log('This is the JavaScript entry file - your code begins here.');
