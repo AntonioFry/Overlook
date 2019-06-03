@@ -1,0 +1,95 @@
+/* This is an example of using Sass, otherwise plain CSS works too*/
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+
+
+body {
+  box-sizing: border-box;
+  margin: 0px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+header {
+  background-color: $header-color; 
+  height: 10%;
+  padding: 10px;
+  width: 100%;
+  h1 {
+    margin: 0px;
+  }
+}
+
+main {
+  margin: auto;
+  margin-top: 10%;
+  width: 90%;
+}
+
+ul.tabs {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  li {
+	  background: none;
+	  display: inline-block;
+	  padding: 10px 15px;
+	  cursor: pointer;
+  }
+  li.selected {
+		background: $primary-background;
+	}
+}
+
+time {
+  float: right;
+}
+
+.content {
+	display: none;
+	background: $primary-background;
+	padding: 15px;
+}
+
+.content.selected {
+  display: inherit;
+}
+
+#search-rooms-form {
+  @include form-on-right();
+}
+
+#search-orders-form {
+   @include form-on-right();
+}
+
+#search-customer-form {
+  @include customer-form-layout();
+} 
+
+#add-customer-form {
+  @include customer-form-layout();
+  margin-top: 20px;
+}
+
+table {
+  border-collapse: collapse; 
+  border: 1px black solid;
+  text-align: center;
+  width: 100%;
+  thead {
+    th {
+      border: 1px black solid;
+    }
+  }
+  tbody {
+    td {
+      border: 1px black solid;
+    }
+  }
+}
+
+#available-rooms-container {
+  border: 1px black solid;
+  max-height: 250px;
+  overflow: scroll;
+  padding: 5px 5px;
+}

@@ -1,0 +1,32 @@
+@mixin customer-form-layout {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: auto;
+  width: 20%;
+  button {
+    margin: 3px 0px;
+    width: 100%;
+  }
+  label {
+    margin: 3px 0px;
+    text-align: center;
+    width: 100%;
+  }
+  input {
+    margin: 3px 0px;
+    width: 100%;
+  }
+}
+
+@mixin form-on-right {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  width: 100%;
+  label {
+    margin-bottom: 10px; 
+    text-align: right;
+    width: 100%;
+  }
+}

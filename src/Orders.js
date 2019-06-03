@@ -35,8 +35,11 @@ class Orders {
     return totalRoomCosts + totalServiceCosts;
   }
 
-  breakdownOfDatesAndDollars(customerId) {
-
+  roomServiceByCustomer(customerId) {
+    const serviceByCustomer = this.roomServiceData.filter(order => {
+      return order.userID === customerId; 
+    });
+    return serviceByCustomer;
   }
 
   getOrdersByDate(date) {
@@ -50,7 +53,7 @@ class Orders {
     return ordersFormatted;
   }
 
-  dollarsSpentByDay() {
+  dollarsSpentByDay(date) {
 
   }
 

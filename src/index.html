@@ -28,15 +28,24 @@
         </div>
       </section>
       <section class="content" id="tab-2" aria-label="customer section">
-        <form>
+        <form id="search-customer-form">
           <label for="search-customer">Search For Customer</label>
           <input id="search-customer" type="text">
           <button id="search-customer-button">Search</button>
         </form>
+        <form id="add-customer-form">
+          <label for="add-customer">Add Customer</label>
+          <input id="add-customer-input" type="text">
           <button id="add-customer-button">Add Customer</button>
+        </form>
+        <div class="customer-specific-content" hidden>
+          <h2>Customer Info:</h2>
+          <p>ID: <span class="customer-id"></span></p>
+          <p>Name: <span class="customer-name"></span></p>
+        </div>
       </section>
       <section class="content" id="tab-3" aria-label="rooms section">
-        <form>
+        <form id="search-rooms-form">
           <label for="search-rooms-by-date">Search For Rooms by Date</label>
           <input id="search-rooms-by-date" type="text">
           <button id="rooms-by-date-button">Search</button>
@@ -49,10 +58,39 @@
         <div class="tab-content-containers">
           <p id="least-booked-date"></p>
         </div>
+        <div class="customer-specific-content" hidden>
+          <div id="available-rooms-container">
+            <h2>Available Rooms</h2>
+            <table>
+              <thead>
+                <th>Number</th>
+                <th>Type</th>
+                <th>Bidet</th>
+                <th>Bed Count</th>
+                <th>Cost Per Night</th>
+              </thead>
+              <tbody id="table-available-rooms">
+            
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <table>
+              <thead>
+                <th>Date</th>
+                <th>Customer ID</th>
+                <th>Room</th>
+              </thead>
+              <tbody id="customer-bookings">
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
       </section>
       <section class="content" id="tab-4" aria-label="orders section">
-        <form>
-          <label for="search-orders-by-date"></label>
+        <form id="search-orders-form">
+          <label for="search-orders-by-date">Search For Orders by Date</label>
           <input id="search-orders-by-date" type="text">
           <button id="orders-by-date-button">Search</button>
         </form>
@@ -67,6 +105,20 @@
             </thead>
             <tbody id="all-roomservice-today">
 
+            </tbody>
+          </table>
+        </div>
+        <div class="customer-specific-content" hidden>
+          <h2>Customer Orders Info</h2>
+          <table>
+            <thead>
+              <th>Date</th>
+              <th>Customer ID</th>
+              <th>Food</th>
+              <th>Cost</th>
+            </thead>
+            <tbody id="customer-roomservice">
+              
             </tbody>
           </table>
         </div>

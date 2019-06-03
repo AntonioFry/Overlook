@@ -5,7 +5,7 @@
 import $ from 'jquery';
 
 // An example of how you tell webpack to use a CSS (SCSS) file
-import './css/base.scss';
+import './css/index.scss';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
@@ -13,6 +13,9 @@ import './images/turing-logo.png'
 import data from './data';
 import Bookings from './Bookings';
 import Orders from './Orders'
+import RoomRepo from './RoomRepo';
+import Customer from './Customer';
+import CustomerRepo from "./CustomerRepo";
 
 
 setTimeout(() => {
@@ -28,9 +31,9 @@ setTimeout(() => {
       $("#" + tab_id).addClass('selected');
     });
     
-    let date = new Date()
     
     function todaysDate() {
+      let date = new Date();
       if (date.getDay() < 10 && (date.getMonth() + 1) < 10) {
         return `0${date.getDate()}/0${date.getMonth()+1}/${date.getFullYear()}`;
       } else if (date.getDate() < 10) {
@@ -45,8 +48,10 @@ setTimeout(() => {
     console.log(data.roomServiceData)
 
     let customer;
+    let customerRepo = new CustomerRepo(data.userData);
     let bookings = new Bookings(data.bookingData, data.roomsData);
     let orders = new Orders(data.roomServiceData, data.roomsData, data.bookingData);
+    let roomRepo = new RoomRepo(data.roomsData, data.bookingData);
     
     $('#todays-date').text(todaysDate());
 
@@ -67,7 +72,24 @@ setTimeout(() => {
 
     $('#all-roomservice-today').append(orders.getOrdersByDate(todaysDate()));
 
+    $('#table-available-rooms')
+      .append(roomRepo.formatAvailableRooms(todaysDate()));
 
+    function displayCustomerInfo(customer) {
+      $('#customer-bookings').append(roomRepo.bookingForCustomer(customer.id))
+      $('.customer-id').text(customer.id);
+      $('.customer-name').text(customer.name);
+      $('#customer-roomsservice')
+        .append(orders.roomServiceByCustomer(customer.id));
+    }
+
+    $('#add-customer-button').on('click', function(e) {
+      e.preventDefault();
+      let nameInput = $('#add-customer-input').val();
+      customer = new Customer(customerRepo.createCustomer(nameInput));
+      displayCustomerInfo(customer);
+      $('.customer-specific-content').removeAttr("hidden");
+    });
 
   });  
 }, 150);
