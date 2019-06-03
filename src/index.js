@@ -46,12 +46,15 @@ setTimeout(() => {
 
     let customer;
     let bookings = new Bookings(data.bookingData, data.roomsData);
-    let orders = new Orders(data.roomServiceData);
+    let orders = new Orders(data.roomServiceData, data.roomsData, data.bookingData);
     
     $('#todays-date').text(todaysDate());
 
     $('#rooms-available')
-      .text(`there are ${bookings.getAvailableRooms(todaysDate()).length} rooms available today`);
+      .text(`There are ${bookings.getAvailableRooms(todaysDate()).length} rooms available today`);
+
+    $('#todays-income')
+      .text(`The hotel made $${orders.totalIncomeByDay(todaysDate())} today`);
 
     $('#rooms-occupied')
       .text(`${bookings.roomsOccupiedPercentage(todaysDate())} of rooms are occupied today`);
@@ -63,6 +66,8 @@ setTimeout(() => {
       .text(`${bookings.leastPopularDate(todaysDate())} is the least booked date`);
 
     $('#all-roomservice-today').append(orders.getOrdersByDate(todaysDate()));
+
+
 
   });  
 }, 140);

@@ -12,7 +12,9 @@ class Orders {
       return bookedRoomNumbers.includes(room.number)
     });
     const roomCosts = rooms.map(room => room.costPerNight);
-    return roomCosts.reduce((total, room) => total + room);
+    return roomCosts.reduce((total, room) => {
+      return total + room 
+    }, 0);
   }
 
   serviceIncomeByDay(date) {
@@ -22,7 +24,9 @@ class Orders {
     const roomServiceCosts = roomServiceByDay.map(service => {
       return service.totalCost
     });
-    return roomServiceCosts.reduce((total, order) => total + order);
+    return roomServiceCosts.reduce((total, order) => {
+      return total + order 
+    }, 0);
   }
 
   totalIncomeByDay(date) {
