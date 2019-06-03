@@ -58,32 +58,34 @@
         <div class="tab-content-containers">
           <p id="least-booked-date"></p>
         </div>
-        <div id="available-rooms-container">
-          <table>
-            <thead>
-              <th>Date</th>
-              <th>Type</th>
-              <th>Bidet</th>
-              <th>Bed Count</th>
-              <th>Room</th>
-              <th>Cost Per Night</th>
-            </thead>
-            <tbody id="customer-bookings">
-          
-            </tbody>
-          </table>
-        </div>
         <div class="customer-specific-content" hidden>
-          <table>
-            <thead>
-              <th>Date</th>
-              <th>Customer ID</th>
-              <th>Room</th>
-            </thead>
-            <tbody id="customer-bookings">
-          
-            </tbody>
-          </table>
+          <div id="available-rooms-container">
+            <h2>Available Rooms</h2>
+            <table>
+              <thead>
+                <th>Number</th>
+                <th>Type</th>
+                <th>Bidet</th>
+                <th>Bed Count</th>
+                <th>Cost Per Night</th>
+              </thead>
+              <tbody id="table-available-rooms">
+            
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <table>
+              <thead>
+                <th>Date</th>
+                <th>Customer ID</th>
+                <th>Room</th>
+              </thead>
+              <tbody id="customer-bookings">
+                
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
       <section class="content" id="tab-4" aria-label="orders section">

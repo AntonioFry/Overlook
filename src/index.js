@@ -13,6 +13,8 @@ import './images/turing-logo.png'
 import data from './data';
 import Bookings from './Bookings';
 import Orders from './Orders'
+import RoomRepo from './RoomRepo';
+import Customer from './Customer';
 
 
 setTimeout(() => {
@@ -28,9 +30,9 @@ setTimeout(() => {
       $("#" + tab_id).addClass('selected');
     });
     
-    let date = new Date()
     
     function todaysDate() {
+      let date = new Date();
       if (date.getDay() < 10 && (date.getMonth() + 1) < 10) {
         return `0${date.getDate()}/0${date.getMonth()+1}/${date.getFullYear()}`;
       } else if (date.getDate() < 10) {
@@ -47,6 +49,7 @@ setTimeout(() => {
     let customer;
     let bookings = new Bookings(data.bookingData, data.roomsData);
     let orders = new Orders(data.roomServiceData, data.roomsData, data.bookingData);
+    let roomRepo = new RoomRepo(data.roomsData, data.bookingData);
     
     $('#todays-date').text(todaysDate());
 
@@ -67,7 +70,12 @@ setTimeout(() => {
 
     $('#all-roomservice-today').append(orders.getOrdersByDate(todaysDate()));
 
+    $('#table-available-rooms')
+      .append(roomRepo.formatAvailableRooms(todaysDate()));
 
+    $('')
+
+    // $('#customer-bookings').append(roomRepo.bookingForCustomer(customer.id))
 
   });  
 }, 150);
