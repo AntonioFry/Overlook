@@ -43,4 +43,8 @@ describe('Orders', function() {
     expect(orders.totalIncomeByDay("17/07/2019")).to.equal(363.52);
   });
 
+  it('should return an array of order by a specific customer', function() {
+    expect(orders.roomServiceByCustomer(4).length).to.equal(1);
+  });
+
 });

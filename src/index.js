@@ -75,13 +75,21 @@ setTimeout(() => {
     $('#table-available-rooms')
       .append(roomRepo.formatAvailableRooms(todaysDate()));
 
-    $('#add-customer-button').on('click', function() {
-      let nameInput = $('#add-customer-input');
-      customer = new Customer(customerRepo.createCustomer(nameInput));
-      console.log(customer);
-    })
+    function displayCustomerInfo(customer) {
+      $('#customer-bookings').append(roomRepo.bookingForCustomer(customer.id))
+      $('.customer-id').text(customer.id);
+      $('.customer-name').text(customer.name);
+      $('#customer-roomsservice')
+        .append(orders.roomServiceByCustomer(customer.id));
+    }
 
-    // $('#customer-bookings').append(roomRepo.bookingForCustomer(customer.id))
+    $('#add-customer-button').on('click', function(e) {
+      e.preventDefault();
+      let nameInput = $('#add-customer-input').val();
+      customer = new Customer(customerRepo.createCustomer(nameInput));
+      displayCustomerInfo(customer);
+      $('.customer-specific-content').removeAttr("hidden");
+    });
 
   });  
 }, 150);
