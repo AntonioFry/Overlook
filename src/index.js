@@ -12,6 +12,7 @@ import './images/turing-logo.png'
 
 import data from './data';
 import Bookings from './Bookings';
+import Orders from './Orders'
 
 
 setTimeout(() => {
@@ -41,10 +42,11 @@ setTimeout(() => {
       }
     }
 
-    
+    console.log(data.roomServiceData)
+
     let customer;
     let bookings = new Bookings(data.bookingData, data.roomsData);
-    let orders;
+    let orders = new Orders(data.roomServiceData);
     
     $('#todays-date').text(todaysDate());
 
@@ -59,6 +61,8 @@ setTimeout(() => {
     
     $('#least-booked-date')
       .text(`${bookings.leastPopularDate(todaysDate())} is the least booked date`);
+
+    $('#all-roomservice-today').append(orders.getOrdersByDate(todaysDate()));
 
   });  
 }, 140);

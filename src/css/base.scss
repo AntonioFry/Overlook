@@ -38,3 +38,20 @@ time {
 .content.selected {
   display: inherit;
 }
+
+table {
+  border-collapse: collapse; 
+  border: 1px black solid;
+  text-align: center;
+  width: 100%;
+  thead {
+    th {
+      border: 1px black solid;
+    }
+  }
+  tbody {
+    td {
+      border: 1px black solid;
+    }
+  }
+}
