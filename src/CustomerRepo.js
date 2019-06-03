@@ -6,6 +6,7 @@ class CustomerRepo {
   createCustomer(customerName) {
     let customerId = this.usersData.length + 1;
     this.usersData.push({id: customerId, name: customerName})
+    return this.usersData.slice().pop();
   }
 
   findCustomerByName(name) {

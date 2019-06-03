@@ -15,6 +15,7 @@ import Bookings from './Bookings';
 import Orders from './Orders'
 import RoomRepo from './RoomRepo';
 import Customer from './Customer';
+import CustomerRepo from "./CustomerRepo";
 
 
 setTimeout(() => {
@@ -47,6 +48,7 @@ setTimeout(() => {
     console.log(data.roomServiceData)
 
     let customer;
+    let customerRepo = new CustomerRepo(data.userData);
     let bookings = new Bookings(data.bookingData, data.roomsData);
     let orders = new Orders(data.roomServiceData, data.roomsData, data.bookingData);
     let roomRepo = new RoomRepo(data.roomsData, data.bookingData);
@@ -73,7 +75,11 @@ setTimeout(() => {
     $('#table-available-rooms')
       .append(roomRepo.formatAvailableRooms(todaysDate()));
 
-    $('')
+    $('#add-customer-button').on('click', function() {
+      let nameInput = $('#add-customer-input');
+      customer = new Customer(customerRepo.createCustomer(nameInput));
+      console.log(customer);
+    })
 
     // $('#customer-bookings').append(roomRepo.bookingForCustomer(customer.id))
 

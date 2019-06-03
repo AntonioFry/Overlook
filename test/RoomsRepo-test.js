@@ -29,7 +29,7 @@ describe('RoomRepo', function () {
   });
 
   it('should return the bookings of a specific customer', function() {
-    expect(roomRepo.bookingForCustomer(1).length).to.equal(1)
+    expect(roomRepo.bookingForCustomer(1).length).to.equal(2);
   });
 
 });
