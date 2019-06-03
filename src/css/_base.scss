@@ -9,7 +9,7 @@ body {
 }
 
 header {
-  background-color: #6478AD; 
+  background-color: $header-color; 
   height: 10%;
   padding: 10px;
   width: 100%;
@@ -35,7 +35,7 @@ ul.tabs {
 	  cursor: pointer;
   }
   li.selected {
-		background: #ededed;
+		background: $primary-background;
 	}
 }
 
@@ -45,7 +45,7 @@ time {
 
 .content {
 	display: none;
-	background: #ededed;
+	background: $primary-background;
 	padding: 15px;
 }
 
@@ -53,52 +53,28 @@ time {
   display: inherit;
 }
 
+#search-rooms-form {
+  @include form-on-right();
+}
+
+#search-orders-form {
+   @include form-on-right();
+}
+
 #search-customer-form {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin: auto;
-  width: 20%;
-  button {
-    margin: 3px 0px;
-    width: 100%;
-  }
-  label {
-    margin: 3px 0px;
-    text-align: center;
-    width: 100%;
-  }
-  input {
-    margin: 3px 0px;
-    width: 100%;
-  }
+  @include customer-form-layout();
 } 
 
 #add-customer-form {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin: 20px auto;
-  width: 20%;
-  button {
-    margin: 3px 0px;
-    width: 100%;
-  }
-  label {
-    margin: 3px 0px;
-    text-align: center;
-    width: 100%;
-  }
-  input {
-    margin: 3px 0px;
-    width: 100%;
-  }
+  @include customer-form-layout();
+  margin-top: 20px;
 }
-  table {
-    border-collapse: collapse; 
-    border: 1px black solid;
-    text-align: center;
-    width: 100%;
+
+table {
+  border-collapse: collapse; 
+  border: 1px black solid;
+  text-align: center;
+  width: 100%;
   thead {
     th {
       border: 1px black solid;
