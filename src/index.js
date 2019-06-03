@@ -52,9 +52,14 @@ setTimeout(() => {
       .text(`there are ${bookings.getAvailableRooms(todaysDate()).length} rooms available today`);
 
     $('#rooms-occupied')
-      .text(`${bookings.roomsOccupiedPercentage(todaysDate())} of rooms are occupied today`)
+      .text(`${bookings.roomsOccupiedPercentage(todaysDate())} of rooms are occupied today`);
 
+    $('#popular-booking-date')
+      .text(`${bookings.getMostPopularDate(todaysDate())} is the most booked date`);
     
+    $('#least-booked-date')
+      .text(`${bookings.leastPopularDate(todaysDate())} is the least booked date`);
+
   });  
 }, 140);
 
