@@ -12,6 +12,7 @@ import './images/turing-logo.png'
 
 import data from './data';
 import Bookings from './Bookings';
+import Orders from './Orders'
 
 
 setTimeout(() => {
@@ -41,15 +42,19 @@ setTimeout(() => {
       }
     }
 
-    
+    console.log(data.roomServiceData)
+
     let customer;
     let bookings = new Bookings(data.bookingData, data.roomsData);
-    let orders;
+    let orders = new Orders(data.roomServiceData, data.roomsData, data.bookingData);
     
     $('#todays-date').text(todaysDate());
 
     $('#rooms-available')
-      .text(`there are ${bookings.getAvailableRooms(todaysDate()).length} rooms available today`);
+      .text(`There are ${bookings.getAvailableRooms(todaysDate()).length} rooms available today`);
+
+    $('#todays-income')
+      .text(`The hotel made $${orders.totalIncomeByDay(todaysDate())} today`);
 
     $('#rooms-occupied')
       .text(`${bookings.roomsOccupiedPercentage(todaysDate())} of rooms are occupied today`);
@@ -60,7 +65,11 @@ setTimeout(() => {
     $('#least-booked-date')
       .text(`${bookings.leastPopularDate(todaysDate())} is the least booked date`);
 
+    $('#all-roomservice-today').append(orders.getOrdersByDate(todaysDate()));
+
+
+
   });  
-}, 140);
+}, 150);
 
 console.log('This is the JavaScript entry file - your code begins here.');

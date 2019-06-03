@@ -44,7 +44,7 @@ class Bookings {
   roomsOccupiedPercentage(date) {
     const availableRooms = this.getAvailableRooms(date);
     const percentage = (availableRooms.length / this.roomsData.length) * 100;
-    return `${100 - Math.round(percentage)}%`;
+    return `${100 - percentage}%`;
   }
 
   getDatesAndBooks() {
