@@ -19,7 +19,7 @@ const roomServiceMock = [
   },
   {
     userID: 4,
-    date: "01/01/2020",
+    date: "17/07/2019",
     food: "Rustic Soft Sandwich",
     totalCost: 18.63
   },
