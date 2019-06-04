@@ -35,7 +35,7 @@ class RoomRepo {
     let formattedBooking = customerBookings.map(booking => {
       return `<tr><td>${booking.date}</td><td>${booking.userID}</td>
       <td>${booking.roomNumber}</td></tr>`
-    });
+    }).join('');
     if (formattedBooking.length === 0) {
       return `<p class="no-info-found">There are no bookings for this customer</p>`;
     } else {
