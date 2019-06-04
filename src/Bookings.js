@@ -12,6 +12,7 @@ class Bookings {
       this.bookingData.push(
         { userID: customerId, date: desiredDate, roomNumber: room }
       );
+      return { 'userID': customerId, 'date': desiredDate, 'roomNumber': room };
     } else {
       return `You cannot book this room for this date`;
     }
@@ -79,6 +80,13 @@ class Bookings {
     } else {
       return availableRooms;
     }
+  }
+
+  formatRoomTypes(date, type) {
+    const roomsByType = this.filterRoomsByType(date, type);
+    const formattedRooms = roomsByType.map(room => {
+      return 
+    });
   }
 
   bookingsForCurrentDay(date) {

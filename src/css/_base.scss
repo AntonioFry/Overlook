@@ -89,7 +89,44 @@ table {
 
 #available-rooms-container {
   border: 1px black solid;
+  margin: 0px 0px 30px;
   max-height: 250px;
   overflow: scroll;
   padding: 5px 5px;
+}
+
+.no-info-found {
+  color: red;
+  text-align: center;
+  width: 100%;
+}
+
+#book-room-button {
+  height: 40px;
+  margin: 20px 40% 20px;
+  width: 20%;
+}
+
+#book-room-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
+  width: 20%;
+  select {
+    margin: 5px 0px;
+    width: 100%;
+  }
+  label {
+    margin: 5px 0px 0px;
+    width: 100%;
+  }
+  input {
+    margin: 5px 0px;
+    width: 100%;
+  }
+  button {
+    margin: 5px 0px;
+    width: 100%;
+  }
 }
