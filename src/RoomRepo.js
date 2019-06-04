@@ -16,11 +16,11 @@ class RoomRepo {
   formatAvailableRooms(date) {
     const availableRooms = this.getAvailableRooms(date);
     const formattedRooms = availableRooms.map(room => {
-      if (room.bidet === true) {
-        room.bidet = "YAH";
-      } else {
-        room.bidet = "NAH";
-      }
+      // if (room.bidet === true) {
+      //   room.bidet = "YAH";
+      // } else {
+      //   room.bidet = "NAH";
+      // }
       return `<tr><td>${room.number}</td><td>${room.roomType}</td>
       <td>${room.bidet}</td><td>${room.numBeds}</td>
       <td>${room.costPerNight}</td></tr>`
@@ -32,10 +32,24 @@ class RoomRepo {
     const customerBookings = this.bookingData.filter(booking => {
       return booking.userID === customerId;
     });
-    return customerBookings.map(booking => {
+    let formattedBooking = customerBookings.map(booking => {
       return `<tr><td>${booking.date}</td><td>${booking.userID}</td>
       <td>${booking.roomNumber}</td></tr>`
     });
+    if (formattedBooking.length === 0) {
+      return `<p class="no-info-found">There are no bookings for this customer</p>`;
+    } else {
+      return `<table>
+              <thead>
+                <th>Date</th>
+                <th>Customer ID</th>
+                <th>Room</th>
+              </thead>
+              <tbody id="customer-bookings">
+                ${formattedBooking}
+              </tbody>
+            </table>`;
+    }
   }
 
 }

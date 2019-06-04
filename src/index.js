@@ -45,7 +45,7 @@ setTimeout(() => {
       }
     }
 
-    console.log(data.roomServiceData)
+    console.log(data.bookingData)
 
     let customer;
     let customerRepo = new CustomerRepo(data.userData);
@@ -75,23 +75,52 @@ setTimeout(() => {
     $('#table-available-rooms')
       .append(roomRepo.formatAvailableRooms(todaysDate()));
 
-    function displayCustomerInfo(customer) {
-      $('#customer-bookings').append(roomRepo.bookingForCustomer(customer.id))
+    function displayCustomerInfo() {
+      $('#table-available-rooms')
+        .append(roomRepo.formatAvailableRooms(todaysDate()));
+      $('#customer-bookings-container')
+        .prepend(roomRepo.bookingForCustomer(customer.id))
       $('.customer-id').text(customer.id);
       $('.customer-name').text(customer.name);
-      $('#customer-roomsservice')
+      $('#customer-roomservice')
         .append(orders.roomServiceByCustomer(customer.id));
+    }
+
+    function removeCustomerInfo() {
+      $('#customer-bookings-container').empty();
+      $('.customer-id').empty();
+      $('.customer-name').empty();
+      $('#customer-roomservice').empty();
+      $('#table-available-rooms').empty();
     }
 
     $('#add-customer-button').on('click', function(e) {
       e.preventDefault();
       let nameInput = $('#add-customer-input').val();
       customer = new Customer(customerRepo.createCustomer(nameInput));
+      removeCustomerInfo();
       displayCustomerInfo(customer);
       $('.customer-specific-content').removeAttr("hidden");
     });
 
+    $('#book-room-button').on('click', function(e) {
+      e.preventDefault();
+      $('#book-room-form').slideToggle("slow");
+    });
+
+    $('#submit-roomtype').on('click', function(e) {
+      e.preventDefault();
+      let date = $('#date-input').val();
+      let roomType = $('#roomtype-picker').val();
+      let filteredBookData = bookings.filterRoomsByType(date, roomType);
+      let pickedRoom = filteredBookData.shift();
+      bookings.bookRoom(customer.id, date, pickedRoom.number);
+      $('#book-room-form').slideToggle("slow");
+      removeCustomerInfo();
+      displayCustomerInfo();
+    })
+
   });  
-}, 150);
+}, 200);
 
 console.log('This is the JavaScript entry file - your code begins here.');

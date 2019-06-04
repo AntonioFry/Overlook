@@ -74,18 +74,22 @@
               </tbody>
             </table>
           </div>
-          <div>
-            <table>
-              <thead>
-                <th>Date</th>
-                <th>Customer ID</th>
-                <th>Room</th>
-              </thead>
-              <tbody id="customer-bookings">
-                
-              </tbody>
-            </table>
+          <h2>Customer Booked Rooms</h2>
+          <div id="customer-bookings-container">
+            
           </div>
+          <button id="book-room-button">Book Room</button>
+          <form id="book-room-form" hidden>
+            <select id="roomtype-picker" name="room-type">
+              <option value="single room">Single Room</option>
+              <option value="suite">Suite</option>
+              <option value="junior suite">Junior Suite</option>
+              <option value="residential suite">Residential Suite</option>
+            </select>
+            <label for="date-input">Date</label>
+            <input id="date-input" type="text">
+            <button id="submit-roomtype">Submit</button>
+          </form>
         </div>
       </section>
       <section class="content" id="tab-4" aria-label="orders section">
@@ -95,32 +99,32 @@
           <button id="orders-by-date-button">Search</button>
         </form>
         <h2>All Orders For <span id="date-for-orders"></span></h2>
-        <div class="tab-content-containers">
-          <table>
+        <div class="tab-content-containers" id="all-roomservice-today">
+          <!-- <table>
             <thead>
               <th>Date</th>
               <th>Customer ID</th>
               <th>Food</th>
               <th>Cost</th>
             </thead>
-            <tbody id="all-roomservice-today">
+            <tbody>
 
             </tbody>
-          </table>
+          </table> -->
         </div>
-        <div class="customer-specific-content" hidden>
+        <div class="customer-specific-content" id="customer-roomservice" hidden>
           <h2>Customer Orders Info</h2>
-          <table>
+          <!-- <table>
             <thead>
               <th>Date</th>
               <th>Customer ID</th>
               <th>Food</th>
               <th>Cost</th>
             </thead>
-            <tbody id="customer-roomservice">
+            <tbody>
               
             </tbody>
-          </table>
+          </table> -->
         </div>
       </section>
     </main>

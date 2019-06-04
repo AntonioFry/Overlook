@@ -3,6 +3,7 @@ class Orders {
     this.roomServiceData = roomServiceData;
     this.roomsData = roomsData;
     this.bookingData = bookingData;
+    this.sandwiches = [];
   }
 
   roomIncomeByDay(date) {
@@ -39,7 +40,25 @@ class Orders {
     const serviceByCustomer = this.roomServiceData.filter(order => {
       return order.userID === customerId; 
     });
-    return serviceByCustomer;
+    const ordersFormatted = serviceByCustomer.map((order) => {
+      return `<tr><td>${order.date}</td><td>${order.userID}</td>
+      <td>${order.food}</td><td>${order.totalCost}</td></tr>`
+    });
+    if (ordersFormatted.length === 0) {
+      return `<p class="no-info-found">There is no roomservice for this customer</p>`
+    } else {
+      return `<table>
+            <thead>
+              <th>Date</th>
+              <th>Customer ID</th>
+              <th>Food</th>
+              <th>Cost</th>
+            </thead>
+            <tbody id="customer-roomservice">
+              ${ordersFormatted}
+            </tbody>
+          </table>`
+    }
   }
 
   getOrdersByDate(date) {
@@ -50,7 +69,21 @@ class Orders {
       return `<tr><td>${order.date}</td><td>${order.userID}</td>
       <td>${order.food}</td><td>${order.totalCost}</td></tr>`
     });
-    return ordersFormatted;
+    if (ordersFormatted.length === 0) {
+      return  `<p class="no-info-found">There is no roomservice for today</p>`;
+    } else {
+      return `<table>
+            <thead>
+              <th>Date</th>
+              <th>Customer ID</th>
+              <th>Food</th>
+              <th>Cost</th>
+            </thead>
+            <tbody id="all-roomservice-today">
+              ${ordersFormatted};
+            </tbody>
+          </table>`;
+    }
   }
 
   dollarsSpentByDay(date) {
