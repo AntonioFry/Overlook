@@ -118,7 +118,27 @@ setTimeout(() => {
       $('#book-room-form').slideToggle("slow");
       removeCustomerInfo();
       displayCustomerInfo();
-    })
+    });
+
+    function getUserBySearch(inputValue) {
+      if (customerRepo.findCustomerByName(inputValue) === undefined) {
+        let parsedInput = parseInt(inputValue);
+        return customerRepo.findCustomerById(parsedInput);
+      } else {
+        return customerRepo.findCustomerByName(inputValue);
+      }
+    }
+
+    $('#search-customer-button').on('click', function(e) {
+      e.preventDefault();
+      let customerSearchInput = $('#search-customer').val();
+      let foundCustomer = getUserBySearch(customerSearchInput);
+      console.log(foundCustomer);
+      customer = new Customer(foundCustomer);
+      removeCustomerInfo();
+      displayCustomerInfo(customer);
+      $('.customer-specific-content').removeAttr("hidden");
+    });
 
   });  
 }, 200);
