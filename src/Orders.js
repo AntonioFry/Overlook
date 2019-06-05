@@ -16,7 +16,7 @@ class Orders {
   addOrder(customerId, desiredDate, desiredFood, cost) {
     this.roomServiceData.push(
       { 'userID': customerId, 'date': desiredDate,
-        'food': desiredFood, 'totalCost': cost }
+        'food': desiredFood, 'totalCost': parseInt(cost) }
     );
   }
 

@@ -47,7 +47,7 @@ setTimeout(() => {
 
     function createPrice(min, max) {
       let price = Math.round(Math.random() * (max - min) + min);
-      return `${price}.00`;
+      return `${price}`;
     }
 
     let customer;
@@ -91,7 +91,7 @@ setTimeout(() => {
       $('#current-customer').show('slow');
       $('#bookings-date-selector')
         .append(roomRepo.dropdownCustomerBookings(customer.id));
-      $('#total-spent').append(orders.dollarsSpentAllDays(customer.id));
+      $('#total-spent').text(orders.dollarsSpentAllDays(customer.id));
     }
 
     function removeCustomerInfo() {
