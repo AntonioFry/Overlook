@@ -32,4 +32,8 @@ describe('RoomRepo', function () {
     expect(roomRepo.bookingForCustomer(1)).to.be.a('string');
   });
 
+  it('should return a html format of customers booking dates', function() {
+    expect(roomRepo.dropdownCustomerBookings(1)).to.be.a('string');
+  });
+
 });

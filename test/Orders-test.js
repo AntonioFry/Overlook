@@ -46,4 +46,12 @@ describe('Orders', function() {
     expect(orders.roomServiceByCustomer(4)).to.be.a('string');
   });
 
+  it('should return the cost of a paticular day for a customer', function() {
+    expect(orders.dollarsSpentByDay(1)).to.be.a('object');
+  });
+
+  it('should return the cost of all roomservice for a customer', function() {
+    expect(orders.dollarsSpentAllDays(1)).to.equal("$9.48");
+  });
+
 });
