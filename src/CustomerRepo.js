@@ -10,12 +10,10 @@ class CustomerRepo {
   }
 
   findCustomerByName(name) {
-    console.log(this.usersData.find(user => user.name === name))
     return this.usersData.find(user => user.name === name);
   }
 
   findCustomerById(id) {
-    console.log(this.usersData.find(user => user.id === id))
     return this.usersData.find(user => user.id === id);
   }
 

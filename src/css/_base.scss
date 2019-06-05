@@ -111,7 +111,7 @@ table {
 }
 
 #book-room-button {
-  @include booking-buttons();
+  @include toggle-buttons();
 }
 
 #book-room-form {
@@ -123,9 +123,27 @@ table {
 }
 
 #toggle-unbook-form {
-  @include booking-buttons();
+  @include toggle-buttons();
 }
 
 #unbook-room-form {
   @include booking-forms();
+}
+
+#add-order-form {
+   @include toggle-buttons();
+}
+
+#add-order-form {
+  border: 1px $body-background solid;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
+  padding: 3px;
+  width: 20%;
+  select {
+    margin: 5px 0px;
+    width: 100%;
+  }
 }

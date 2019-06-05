@@ -173,7 +173,7 @@ setTimeout(() => {
       const food = $('#sandwiches-selector').val();
       orders.addOrder(customer.id, date, food, cost);
       removeCustomerInfo();
-      displayCustomerInfo()
+      displayCustomerInfo();
     });
 
   });  
