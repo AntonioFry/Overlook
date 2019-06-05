@@ -13,8 +13,15 @@ class Orders {
       'Rustic Wooden Sandwich'];
   }
 
+  addOrder(customerId, desiredDate, desiredFood, cost) {
+    this.roomServiceData.push(
+      { 'userID': customerId, 'date': desiredDate,
+        'food': desiredFood, 'totalCost': cost }
+    );
+  }
+
   formatSandwiches() {
-    return this.sandwiches(sandwich => {
+    return this.sandwiches.map(sandwich => {
       return `<option value="${sandwich}">${sandwich}<option>`
     });
   }

@@ -45,6 +45,11 @@ setTimeout(() => {
       }
     }
 
+    function createPrice(min, max) {
+      let price = Math.round(Math.random() * (max - min) + min);
+      return `${price}.00`;
+    }
+
     console.log(data.bookingData)
 
     let customer;
@@ -77,6 +82,8 @@ setTimeout(() => {
     $('#table-available-rooms')
       .append(roomRepo.formatAvailableRooms(todaysDate()));
 
+    $('#sandwiches-selector').append(orders.formatSandwiches());
+
     function displayCustomerInfo() {
       $('#table-available-rooms')
         .append(roomRepo.formatAvailableRooms(todaysDate()));
@@ -87,6 +94,8 @@ setTimeout(() => {
       $('#customer-roomservice')
         .append(orders.roomServiceByCustomer(customer.id));
       $('#current-customer').show('slow');
+      $('#bookings-date-selector')
+        .append(roomRepo.dropdownCustomerBookings(customer.id));
     }
 
     function removeCustomerInfo() {
@@ -95,6 +104,7 @@ setTimeout(() => {
       $('.customer-name').empty();
       $('#customer-roomservice').empty();
       $('#table-available-rooms').empty();
+      $('#bookings-date-selector').empty();
     }
 
     $('#add-customer-button').on('click', function(e) {
@@ -154,6 +164,16 @@ setTimeout(() => {
       bookings.unbookRoom(customer.id, date);
       removeCustomerInfo();
       displayCustomerInfo();
+    });
+
+    $('#add-order-button').on('click', function(e) {
+      e.preventDefault();
+      const cost = createPrice(16, 25);
+      const date = $('#bookings-date-selector').val();
+      const food = $('#sandwiches-selector').val();
+      orders.addOrder(customer.id, date, food, cost);
+      removeCustomerInfo();
+      displayCustomerInfo()
     });
 
   });  

@@ -28,7 +28,7 @@ class RoomRepo {
     return formattedRooms;
   }
 
-  dropdownCustomerBookings (customerId) {
+  dropdownCustomerBookings(customerId) {
     const customerBookings = this.bookingData.filter(booking => {
       return booking.userID === customerId;
     });
