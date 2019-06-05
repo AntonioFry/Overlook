@@ -26,4 +26,4 @@ It should return a link to use in the browser.
 
 ## Site Preview
 
-![Game Image](http://www.giphy.com/gifs/da79S5aQQyFcB6Z1I0)
+![Game Image](https://media.giphy.com/media/da79S5aQQyFcB6Z1I0/giphy.gif)
