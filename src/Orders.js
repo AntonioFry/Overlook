@@ -106,12 +106,21 @@ class Orders {
     }
   }
 
-  dollarsSpentByDay(date) {
-
+  dollarsSpentByDay(customerId) {
+    const customerBookings = this.roomServiceData.filter(order => {
+      return order.userID === customerId;
+    });
+    return customerBookings.shift();
   }
 
-  dollarsSpentOnAllDays() {
-
+  dollarsSpentAllDays(customerId) {
+    const customerBookings = this.roomServiceData.filter(order => {
+      return order.userID === customerId;
+    });
+    const totalSpent = customerBookings.reduce((total, order) => {
+      return total + order.totalCost;
+    }, 0)
+    return `$${totalSpent}`
   }
 
 }

@@ -91,6 +91,7 @@ setTimeout(() => {
       $('#current-customer').show('slow');
       $('#bookings-date-selector')
         .append(roomRepo.dropdownCustomerBookings(customer.id));
+      $('#total-spent').append(orders.dollarsSpentAllDays(customer.id));
     }
 
     function removeCustomerInfo() {
@@ -100,6 +101,7 @@ setTimeout(() => {
       $('#customer-roomservice').empty();
       $('#table-available-rooms').empty();
       $('#bookings-date-selector').empty();
+      $('#total-spent').empty();
     }
 
     $('#add-customer-button').on('click', function(e) {
