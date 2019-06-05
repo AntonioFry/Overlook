@@ -6,6 +6,8 @@ Overlook is a hotel management application that allows you to view information f
 
 ## Installation
 
+Link for GitHub pages: https://antoniofry.github.io/Overlook/.
+
 If you want to install a local version:
 
 1. Clone down from the repository and use this command in the terminal: 
