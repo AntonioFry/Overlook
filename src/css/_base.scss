@@ -4,23 +4,31 @@
 
 body {
   box-sizing: border-box;
+  background: $body-background;
   margin: 0px;
   font-family: 'Montserrat', sans-serif;
 }
 
 header {
+  border-bottom: 3px $header-border solid;
   background-color: $header-color; 
+  display: flex;
+  flex-wrap: wrap;
   height: 10%;
+  justify-content: space-around;
   padding: 10px;
   width: 100%;
   h1 {
+    width: 100%;
     margin: 0px;
+  }
+  #current-customer {
+    width: 100%;
   }
 }
 
 main {
-  margin: auto;
-  margin-top: 10%;
+  margin: 10% auto;
   width: 90%;
 }
 
@@ -72,23 +80,23 @@ time {
 
 table {
   border-collapse: collapse; 
-  border: 1px black solid;
+  border: 1px $body-background solid;
   text-align: center;
   width: 100%;
   thead {
     th {
-      border: 1px black solid;
+      border: 1px $body-background solid;
     }
   }
   tbody {
     td {
-      border: 1px black solid;
+      border: 1px $body-background solid;
     }
   }
 }
 
 #available-rooms-container {
-  border: 1px black solid;
+  border: 1px $body-background solid;
   margin: 0px 0px 30px;
   max-height: 250px;
   overflow: scroll;
@@ -102,31 +110,66 @@ table {
 }
 
 #book-room-button {
-  height: 40px;
-  margin: 20px 40% 20px;
-  width: 20%;
+  @include toggle-buttons();
 }
 
 #book-room-form {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: auto;
-  width: 20%;
+  @include booking-forms();
   select {
     margin: 5px 0px;
     width: 100%;
   }
-  label {
-    margin: 5px 0px 0px;
-    width: 100%;
-  }
-  input {
+}
+
+#toggle-unbook-form {
+  @include toggle-buttons();
+}
+
+#unbook-room-form {
+  @include booking-forms();
+}
+
+#toggle-order-form {
+   @include toggle-buttons();
+}
+
+#add-order-form {
+  border: 1px $body-background solid;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
+  padding: 3px;
+  width: 30%;
+  select {
     margin: 5px 0px;
     width: 100%;
   }
-  button {
-    margin: 5px 0px;
-    width: 100%;
+}
+
+@media only screen and (max-width: 400px) {
+
+  #add-customer-form,
+  #search-customer-form,
+  #unbook-room-form,
+  #book-room-form,
+  #add-order-form {
+    width: 50%;
   }
+
+  #book-room-button,
+  #toggle-unbook-form,
+  #toggle-order-form {
+    margin: 20px 25%;
+    width: 50%;
+  }
+
+  #customer-roomservice {
+    border: 1px $body-background solid;
+    margin: 0px 0px 30px;
+    max-height: 250px;
+    overflow: scroll;
+    padding: 5px 5px;
+  }
+
 }

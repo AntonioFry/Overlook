@@ -35,17 +35,20 @@ setTimeout(() => {
     function todaysDate() {
       let date = new Date();
       if (date.getDay() < 10 && (date.getMonth() + 1) < 10) {
-        return `0${date.getDate()}/0${date.getMonth()+1}/${date.getFullYear()}`;
+        return `0${date.getDate()}/0${date.getMonth() + 1}/${date.getFullYear()}`;
       } else if (date.getDate() < 10) {
-        return `0${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`;
+        return `0${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
       } else if ((date.getMonth() + 1) < 10) {
-        return `${date.getDate()}/0${date.getMonth()+1}/${date.getFullYear()}`;
+        return `${date.getDate()}/0${date.getMonth() + 1}/${date.getFullYear()}`;
       } else {
-        return `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`;
+        return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
       }
     }
 
-    console.log(data.bookingData)
+    function createPrice(min, max) {
+      let price = Math.round(Math.random() * (max - min) + min);
+      return `${price}.00`;
+    }
 
     let customer;
     let customerRepo = new CustomerRepo(data.userData);
@@ -72,8 +75,9 @@ setTimeout(() => {
 
     $('#all-roomservice-today').append(orders.getOrdersByDate(todaysDate()));
 
-    $('#table-available-rooms')
-      .append(roomRepo.formatAvailableRooms(todaysDate()));
+    $('#date-for-orders').text(todaysDate());
+
+    $('#sandwiches-selector').append(orders.formatSandwiches());
 
     function displayCustomerInfo() {
       $('#table-available-rooms')
@@ -84,6 +88,9 @@ setTimeout(() => {
       $('.customer-name').text(customer.name);
       $('#customer-roomservice')
         .append(orders.roomServiceByCustomer(customer.id));
+      $('#current-customer').show('slow');
+      $('#bookings-date-selector')
+        .append(roomRepo.dropdownCustomerBookings(customer.id));
     }
 
     function removeCustomerInfo() {
@@ -92,6 +99,7 @@ setTimeout(() => {
       $('.customer-name').empty();
       $('#customer-roomservice').empty();
       $('#table-available-rooms').empty();
+      $('#bookings-date-selector').empty();
     }
 
     $('#add-customer-button').on('click', function(e) {
@@ -110,7 +118,7 @@ setTimeout(() => {
 
     $('#submit-roomtype').on('click', function(e) {
       e.preventDefault();
-      let date = $('#date-input').val();
+      let date = $('#date-to-book').val();
       let roomType = $('#roomtype-picker').val();
       let filteredBookData = bookings.filterRoomsByType(date, roomType);
       let pickedRoom = filteredBookData.shift();
@@ -118,9 +126,70 @@ setTimeout(() => {
       $('#book-room-form').slideToggle("slow");
       removeCustomerInfo();
       displayCustomerInfo();
+    });
+
+    function getUserBySearch(inputValue) {
+      if (customerRepo.findCustomerByName(inputValue) === undefined) {
+        let parsedInput = parseInt(inputValue);
+        return customerRepo.findCustomerById(parsedInput);
+      } else {
+        return customerRepo.findCustomerByName(inputValue);
+      }
+    }
+
+    $('#search-customer-button').on('click', function(e) {
+      e.preventDefault();
+      let customerSearchInput = $('#search-customer').val();
+      let foundCustomer = getUserBySearch(customerSearchInput);
+      customer = new Customer(foundCustomer);
+      removeCustomerInfo();
+      displayCustomerInfo(customer);
+      $('.customer-specific-content').removeAttr("hidden");
+    });
+
+    $('#toggle-unbook-form').on('click', function(e) {
+      e.preventDefault();
+      $('#unbook-room-form').slideToggle("slow");
+    });
+
+    $('#unbook-room-button').on('click', function(e) {
+      e.preventDefault();
+      let date = $('date-to-unbook').val();
+      bookings.unbookRoom(customer.id, date);
+      removeCustomerInfo();
+      displayCustomerInfo();
+    });
+
+    $('#toggle-order-form').on('click', function(e) {
+      e.preventDefault();
+      $('#add-order-form').slideToggle("slow")
     })
 
-  });  
-}, 200);
+    $('#add-order-button').on('click', function(e) {
+      e.preventDefault();
+      const cost = createPrice(16, 25);
+      const date = $('#bookings-date-selector').val();
+      const food = $('#sandwiches-selector').val();
+      orders.addOrder(customer.id, date, food, cost);
+      removeCustomerInfo();
+      displayCustomerInfo();
+    });
 
-console.log('This is the JavaScript entry file - your code begins here.');
+    $('#rooms-by-date-button').on('click', function(e) {
+      e.preventDefault();
+      const inputValue = $('#rooms-by-date-input').val();
+      $('#table-available-rooms').empty();
+      $('#table-available-rooms')
+        .append(roomRepo.formatAvailableRooms(inputValue));
+    });
+
+    $('#orders-by-date-button').on('click', function(e) {
+      e.preventDefault();
+      const inputValue = $('#orders-by-date-input').val();
+      $('#all-roomservice-today').empty();
+      $('#all-roomservice-today').append(orders.getOrdersByDate(inputValue));
+      $('#date-for-orders').text(inputValue);
+    });
+
+  });  
+}, 250);
