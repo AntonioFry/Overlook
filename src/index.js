@@ -166,6 +166,11 @@ setTimeout(() => {
       displayCustomerInfo();
     });
 
+    $('#toggle-order-form').on('click', function(e) {
+      e.preventDefault();
+      $('#add-order-form').slideToggle("slow")
+    })
+
     $('#add-order-button').on('click', function(e) {
       e.preventDefault();
       const cost = createPrice(16, 25);
