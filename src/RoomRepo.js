@@ -23,16 +23,26 @@ class RoomRepo {
       // }
       return `<tr><td>${room.number}</td><td>${room.roomType}</td>
       <td>${room.bidet}</td><td>${room.numBeds}</td>
-      <td>${room.costPerNight}</td></tr>`
+      <td>$${room.costPerNight}</td></tr>`
     });
     return formattedRooms;
+  }
+
+  dropdownCustomerBookings (customerId) {
+    const customerBookings = this.bookingData.filter(booking => {
+      return booking.userID === customerId;
+    });
+    const formattedBookings = customerBookings.map(order => {
+      return `<option value="${order.date}">${order.date}</option>`
+    }).join('');
+    return formattedBookings;
   }
 
   bookingForCustomer(customerId) {
     const customerBookings = this.bookingData.filter(booking => {
       return booking.userID === customerId;
     });
-    let formattedBooking = customerBookings.map(booking => {
+    const formattedBooking = customerBookings.map(booking => {
       return `<tr><td>${booking.date}</td><td>${booking.userID}</td>
       <td>${booking.roomNumber}</td></tr>`
     }).join('');

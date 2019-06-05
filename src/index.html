@@ -6,6 +6,10 @@
   <body>
     <header>
       <h1>Overlook</h1>
+      <div id="current-customer" hidden>
+        <h2>Selected Customer:</h2>
+        <p class="customer-name"></p>
+      </div>
     </header>
     <main>
       <nav>
@@ -86,9 +90,15 @@
               <option value="junior suite">Junior Suite</option>
               <option value="residential suite">Residential Suite</option>
             </select>
-            <label for="date-input">Date</label>
-            <input id="date-input" type="text">
+            <label for="date-to-book">Date</label>
+            <input id="date-to-book" type="text">
             <button id="submit-roomtype">Submit</button>
+          </form>
+          <button id="toggle-unbook-form">Unbook Room</button>
+          <form id="unbook-room-form" hidden>
+            <label for="date-to-unbook">Date</label>
+            <input id="date-to-unbook" type="text">
+            <button id="unbook-room-button">Unbook</button>
           </form>
         </div>
       </section>
@@ -100,31 +110,23 @@
         </form>
         <h2>All Orders For <span id="date-for-orders"></span></h2>
         <div class="tab-content-containers" id="all-roomservice-today">
-          <!-- <table>
-            <thead>
-              <th>Date</th>
-              <th>Customer ID</th>
-              <th>Food</th>
-              <th>Cost</th>
-            </thead>
-            <tbody>
 
-            </tbody>
-          </table> -->
         </div>
-        <div class="customer-specific-content" id="customer-roomservice" hidden>
+        <div class="customer-specific-content" hidden>
           <h2>Customer Orders Info</h2>
-          <!-- <table>
-            <thead>
-              <th>Date</th>
-              <th>Customer ID</th>
-              <th>Food</th>
-              <th>Cost</th>
-            </thead>
-            <tbody>
-              
-            </tbody>
-          </table> -->
+          <div id="customer-roomservice">
+
+          </div>
+          <button id='add-order-form'></button>
+          <form id="add-order-form">
+            <select name="sandwiches" id="sandwiches-selector">
+
+            </select>
+            <select name="customer-bookings" id="bookings-selector">
+
+            </select>
+            <button id="add-order-button">Add Order</button>
+          </form>   
         </div>
       </section>
     </main>

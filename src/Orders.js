@@ -1,9 +1,22 @@
+// import { access } from "fs";
+
 class Orders {
   constructor(roomServiceData, roomsData, bookingData) {
     this.roomServiceData = roomServiceData;
     this.roomsData = roomsData;
     this.bookingData = bookingData;
-    this.sandwiches = [];
+    this.sandwiches = ['Generic Plastic Sandwich',
+      'Generic Soft Sandwich',
+      'Tasty Fresh Sandwich',
+      'Rustic Soft Sandwich',
+      'Sleek Concrete Sandwich',
+      'Rustic Wooden Sandwich'];
+  }
+
+  formatSandwiches() {
+    return this.sandwiches(sandwich => {
+      return `<option value="${sandwich}">${sandwich}<option>`
+    });
   }
 
   roomIncomeByDay(date) {
@@ -42,8 +55,8 @@ class Orders {
     });
     const ordersFormatted = serviceByCustomer.map((order) => {
       return `<tr><td>${order.date}</td><td>${order.userID}</td>
-      <td>${order.food}</td><td>${order.totalCost}</td></tr>`
-    });
+      <td>${order.food}</td><td>$${order.totalCost}</td></tr>`
+    }).join('');
     if (ordersFormatted.length === 0) {
       return `<p class="no-info-found">There is no roomservice for this customer</p>`
     } else {
@@ -68,7 +81,7 @@ class Orders {
     const ordersFormatted = ordersByDate.map((order) => {
       return `<tr><td>${order.date}</td><td>${order.userID}</td>
       <td>${order.food}</td><td>${order.totalCost}</td></tr>`
-    });
+    }).join('');
     if (ordersFormatted.length === 0) {
       return  `<p class="no-info-found">There is no roomservice for today</p>`;
     } else {

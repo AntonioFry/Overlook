@@ -35,13 +35,13 @@ setTimeout(() => {
     function todaysDate() {
       let date = new Date();
       if (date.getDay() < 10 && (date.getMonth() + 1) < 10) {
-        return `0${date.getDate()}/0${date.getMonth()+1}/${date.getFullYear()}`;
+        return `0${date.getDate()}/0${date.getMonth() + 1}/${date.getFullYear()}`;
       } else if (date.getDate() < 10) {
-        return `0${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`;
+        return `0${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
       } else if ((date.getMonth() + 1) < 10) {
-        return `${date.getDate()}/0${date.getMonth()+1}/${date.getFullYear()}`;
+        return `${date.getDate()}/0${date.getMonth() + 1}/${date.getFullYear()}`;
       } else {
-        return `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`;
+        return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
       }
     }
 
@@ -72,6 +72,8 @@ setTimeout(() => {
 
     $('#all-roomservice-today').append(orders.getOrdersByDate(todaysDate()));
 
+    $('#date-for-orders').text(todaysDate());
+
     $('#table-available-rooms')
       .append(roomRepo.formatAvailableRooms(todaysDate()));
 
@@ -84,6 +86,7 @@ setTimeout(() => {
       $('.customer-name').text(customer.name);
       $('#customer-roomservice')
         .append(orders.roomServiceByCustomer(customer.id));
+      $('#current-customer').show('slow');
     }
 
     function removeCustomerInfo() {
@@ -110,7 +113,7 @@ setTimeout(() => {
 
     $('#submit-roomtype').on('click', function(e) {
       e.preventDefault();
-      let date = $('#date-input').val();
+      let date = $('#date-to-book').val();
       let roomType = $('#roomtype-picker').val();
       let filteredBookData = bookings.filterRoomsByType(date, roomType);
       let pickedRoom = filteredBookData.shift();
@@ -140,7 +143,20 @@ setTimeout(() => {
       $('.customer-specific-content').removeAttr("hidden");
     });
 
+    $('#toggle-unbook-form').on('click', function(e) {
+      e.preventDefault();
+      $('#unbook-room-form').slideToggle("slow");
+    });
+
+    $('#unbook-room-button').on('click', function(e) {
+      e.preventDefault();
+      let date = $('date-to-unbook').val();
+      bookings.unbookRoom(customer.id, date);
+      removeCustomerInfo();
+      displayCustomerInfo();
+    });
+
   });  
-}, 200);
+}, 250);
 
 console.log('This is the JavaScript entry file - your code begins here.');
