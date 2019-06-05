@@ -50,8 +50,6 @@ setTimeout(() => {
       return `${price}.00`;
     }
 
-    console.log(data.bookingData)
-
     let customer;
     let customerRepo = new CustomerRepo(data.userData);
     let bookings = new Bookings(data.bookingData, data.roomsData);
@@ -78,9 +76,6 @@ setTimeout(() => {
     $('#all-roomservice-today').append(orders.getOrdersByDate(todaysDate()));
 
     $('#date-for-orders').text(todaysDate());
-
-    $('#table-available-rooms')
-      .append(roomRepo.formatAvailableRooms(todaysDate()));
 
     $('#sandwiches-selector').append(orders.formatSandwiches());
 
@@ -146,7 +141,6 @@ setTimeout(() => {
       e.preventDefault();
       let customerSearchInput = $('#search-customer').val();
       let foundCustomer = getUserBySearch(customerSearchInput);
-      console.log(foundCustomer);
       customer = new Customer(foundCustomer);
       removeCustomerInfo();
       displayCustomerInfo(customer);
@@ -181,7 +175,21 @@ setTimeout(() => {
       displayCustomerInfo();
     });
 
+    $('#rooms-by-date-button').on('click', function(e) {
+      e.preventDefault();
+      const inputValue = $('#rooms-by-date-input').val();
+      $('#table-available-rooms').empty();
+      $('#table-available-rooms')
+        .append(roomRepo.formatAvailableRooms(inputValue));
+    });
+
+    $('#orders-by-date-button').on('click', function(e) {
+      e.preventDefault();
+      const inputValue = $('#orders-by-date-input').val();
+      $('#all-roomservice-today').empty();
+      $('#all-roomservice-today').append(orders.getOrdersByDate(inputValue));
+      $('#date-for-orders').text(inputValue);
+    });
+
   });  
 }, 250);
-
-console.log('This is the JavaScript entry file - your code begins here.');

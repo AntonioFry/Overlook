@@ -14,10 +14,10 @@
     <main>
       <nav>
         <ul class="tabs">
-          <li class="link tab selected" data-tab="tab-1">Main</li>
-          <li class="link tab" data-tab="tab-2">Customer</li>
-          <li class="link tab" data-tab="tab-3">Rooms</li>
-          <li class="link tab" data-tab="tab-4">Orders</li>
+          <li class="link tab selected" data-tab="tab-1" tabindex="1">Main</li>
+          <li class="link tab" data-tab="tab-2" tabindex="2">Customer</li>
+          <li class="link tab" data-tab="tab-3" tabindex="3">Rooms</li>
+          <li class="link tab" data-tab="tab-4" tabindex="4">Orders</li>
         </ul>
       </nav>
       <section class="content selected" id="tab-1" aria-label="Overlook dashboard">
@@ -50,8 +50,8 @@
       </section>
       <section class="content" id="tab-3" aria-label="rooms section">
         <form id="search-rooms-form">
-          <label for="search-rooms-by-date">Search For Rooms by Date</label>
-          <input id="search-rooms-by-date" type="text">
+          <label for="rooms-by-date-input">Search For Rooms by Date</label>
+          <input id="rooms-by-date-input" type="text">
           <button id="rooms-by-date-button">Search</button>
         </form>
         <h2>Most Popular Booking Date(s)</h2>
@@ -104,8 +104,8 @@
       </section>
       <section class="content" id="tab-4" aria-label="orders section">
         <form id="search-orders-form">
-          <label for="search-orders-by-date">Search For Orders by Date</label>
-          <input id="search-orders-by-date" type="text">
+          <label for="orders-by-date-input">Search For Orders by Date</label>
+          <input id="orders-by-date-input" type="text">
           <button id="orders-by-date-button">Search</button>
         </form>
         <h2>All Orders For <span id="date-for-orders"></span></h2>

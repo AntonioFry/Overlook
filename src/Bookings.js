@@ -29,9 +29,9 @@ class Bookings {
     this.bookingData.splice(bookingIndex, 1); 
   }
 
-  upgradeRoom(userId) {
+  // upgradeRoom(userId) {
     
-  }
+  // }
 
   getAvailableRooms(date) {
     const bookingsByDate = this.bookingData.filter(book => book.date === date);
@@ -82,12 +82,12 @@ class Bookings {
     }
   }
 
-  formatRoomTypes(date, type) {
-    const roomsByType = this.filterRoomsByType(date, type);
-    const formattedRooms = roomsByType.map(room => {
-      return 
-    });
-  }
+  // formatRoomTypes(date, type) {
+  //   const roomsByType = this.filterRoomsByType(date, type);
+  //   const formattedRooms = roomsByType.map(room => {
+  //     return 
+  //   });
+  // }
 
   bookingsForCurrentDay(date) {
     const todaysBookings = this.bookingData.filter(book => book.date === date);

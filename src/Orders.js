@@ -90,7 +90,7 @@ class Orders {
       <td>${order.food}</td><td>${order.totalCost}</td></tr>`
     }).join('');
     if (ordersFormatted.length === 0) {
-      return  `<p class="no-info-found">There is no roomservice for today</p>`;
+      return  `<p class="no-info-found">There is no roomservice for this day</p>`;
     } else {
       return `<table>
             <thead>
@@ -100,9 +100,9 @@ class Orders {
               <th>Cost</th>
             </thead>
             <tbody id="all-roomservice-today">
-              ${ordersFormatted};
+              ${ordersFormatted}
             </tbody>
-          </table>`;
+          </table>`
     }
   }
 
