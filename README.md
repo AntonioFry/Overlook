@@ -4,6 +4,13 @@
 
 Overlook is a hotel management application that allows you to view information from an API such as: bookings, customer info, roomservice orders and more. The site is broken up into four sections: the main dashboard/general info, customer info, rooms info, and orders info. Besides being able to just view information, the site also allow the user to preform actions such as: booking/unbooking rooms, adding customers, and more. The site uses the implimentation of jQuery within javaScript and SCSS for the styling.
 
+## Learning Goals
+
+- Object Oriented Programming
+- JQuery
+- Data Manipulation
+- Fetch/API's
+
 ## Installation
 
 Link for GitHub pages: https://antoniofry.github.io/Overlook/.
